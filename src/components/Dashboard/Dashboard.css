@@ -1,0 +1,40 @@
+#dash {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+#dash-sidebar {
+  display: flex;
+  background-color: #cddc39;
+  width: 25%;
+  flex-direction: column;
+  align-items: center;
+}
+
+#dash-main {
+  background-color: rgba(215, 180, 229, 0.844);
+  width: 75%;
+}
+
+#side-icon {
+  height: 35%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#side-icon img {
+  border-radius: 600px;
+  width: 50%;
+}
+
+#side-txt {
+  padding: 35px;
+  border-bottom: black;
+  border-width: 50px;
+  opacity: 100%;
+}

@@ -1,9 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
+import AdaImg from "./ada-lovet.png";
+import AdaLogo from "./ada-logo.png";
 
 export function Login(props) {
-    return <div id="login">
-        <div id="login-form"></div>
-        <div id="login-img"></div>
+  const [userName, setUserName] = useState("a@a");
+  const [passWord, setPassWord] = useState("1234");
+
+  return (
+    <div id="login">
+      <div id="login-form">
+        <div id="ada-logo">
+          <img src={AdaLogo} alt="" />
+          <h1>
+            Ada <br /> LoveTech
+          </h1>
+        </div>
+        <h1 id="logotxt">
+          This is your opportunity to connect to other women in technology and
+          change your life!
+        </h1>
+        <div id="form-input">
+          <form
+            onSubmit={function (evt) {
+              evt.preventDefault();
+              console.log(userName);
+              console.log(passWord);
+            }}
+          >
+            <input
+              type="email"
+              placeholder="Username"
+              required
+              value={userName}
+              onChange={(evt) => {
+                setUserName(evt.target.value);
+              }}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              required
+              value={passWord}
+              minLength={4}
+              onChange={(evt) => {
+                setPassWord(evt.target.value);
+              }}
+            />
+            <div id="login-btn-wrap">
+              <button id="login-btn" type="submit">
+                Login
+              </button>
+
+              <a href="">Forgot password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="login-img">
+        <img src={AdaImg} alt="" />
+      </div>
     </div>
+  );
 }
