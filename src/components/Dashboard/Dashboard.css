@@ -33,8 +33,52 @@
 }
 
 #side-txt {
-  padding: 35px;
-  border-bottom: black;
-  border-width: 50px;
-  opacity: 100%;
+  width: 100%;
+  padding-top: 35px;
+  border-bottom: 3px solid black;
+}
+
+#sidebar-btn {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#btn-create-evt {
+  width: 150px;
+  height: 60px;
+  color: #000000;
+  font-family: "Source Sans Pro";
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: none;
+  text-align: center;
+  background: #ff9800;
+  border: 1px solid #ff9800;
+  border-radius: 8px;
+}
+
+#sidebar-out {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  width: 100%;
+  border-top: 3px solid black;
+  padding: 3%;
+}
+
+#out-txt {
+  margin-left: 3%;
+}
+
+#door-btn {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  background-color: #cddc39;
+  border: transparent;
 }
