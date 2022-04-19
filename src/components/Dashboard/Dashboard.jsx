@@ -16,12 +16,23 @@ export function Dashboard(props) {
         </div>
         <div id="sidebar-out">
           <button id="door-btn">
-            <img id="door-icon" src={Door} alt="" />
+            <img id="door-icon" src={Door} alt="door icon" />
             <h1 id="out-txt">Logout</h1>
           </button>
         </div>
       </div>
-      <div id="dash-main"></div>
+      <div id="dash-main">
+        <div id="main-header">
+          <div id="btn-div">
+            <button id="header-btn">Any subject</button>
+            <button id="header-btn">Any Distance</button>
+            <button id="header-btn">Reset Filters</button>
+          </div>
+          <div id="input-div">
+            <input id="hearder-search" type="text" placeholder="Search..." />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
