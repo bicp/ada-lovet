@@ -24,12 +24,31 @@ export function Dashboard(props) {
       <div id="dash-main">
         <div id="main-header">
           <div id="btn-div">
-            <button id="header-btn">Any subject</button>
-            <button id="header-btn">Any Distance</button>
-            <button id="header-btn">Reset Filters</button>
+            <button>Any subject</button>
+            <button>Any Distance</button>
+            <button>Reset Filters</button>
           </div>
           <div id="input-div">
-            <input id="hearder-search" type="text" placeholder="Search..." />
+            <input type="text" placeholder="Search..." />
+          </div>
+        </div>
+        <div id="main-main">
+          <div id="main-calendar">calendar</div>
+          <div id="main-notes">notes</div>
+        </div>
+        <div id="main-bottom">
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </div>
         </div>
       </div>
