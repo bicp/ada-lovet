@@ -34,7 +34,7 @@ export function Event(props) {
         </div>
         <div id="main-main">
           <div id="main-calendar">calendar</div>
-          <div id="main-notes">edit</div>
+          <div id="main-edit">edit</div>
         </div>
         <div id="main-bottom">
           <div>
