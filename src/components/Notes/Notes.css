@@ -1,0 +1,10 @@
+#main-notes {
+  width: 49%;
+  height: 100%;
+  font-family: "Source Sans Pro";
+  font-size: 32px;
+  font-weight: bold;
+  background: #ffeb3b;
+  border: none;
+  border-radius: 20px;
+}

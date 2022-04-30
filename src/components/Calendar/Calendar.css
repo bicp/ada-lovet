@@ -1,0 +1,15 @@
+#main-calendar {
+  width: 49%;
+  height: 100%;
+  color: #000000;
+  font-family: "Source Sans Pro";
+  font-size: 150%;
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: none;
+  text-align: left;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 20px;
+}

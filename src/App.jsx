@@ -1,14 +1,14 @@
 import "./App.css";
 import { Dashboard } from "./components/Dashboard/Dashboard";
-import { Event } from "./components/EventEdit/Event";
+import { Event } from "./components/Event/Event";
 import { Login } from "./components/Login/Login";
 
 function App() {
   return (
     <div className="App">
-      {/* {<Dashboard></Dashboard>} */}
+      {/* <Dashboard></Dashboard> */}
       {/* {<Login></Login>} */}
-      {<Event></Event>}
+      <Event></Event>
     </div>
   );
 }
