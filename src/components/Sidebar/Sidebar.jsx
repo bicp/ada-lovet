@@ -2,6 +2,7 @@ import React from "react";
 import "./Sidebar.css";
 import AdaIcon from "./ada-icon.png";
 import Door from "./export.svg";
+import { Link } from "react-router-dom";
 
 export function Sidebar(props) {
   return (
@@ -11,13 +12,18 @@ export function Sidebar(props) {
         <h1 id="side-txt">Welcome, Ada &#x1F44B;</h1>
       </div>
       <div id="sidebar-btn">
-        <button id="btn-create-evt">Create Event</button>
+        <Link to={"/event"}>
+          <button id="btn-create-evt">Create Event</button>
+        </Link>
       </div>
+
       <div id="sidebar-out">
-        <button id="door-btn">
-          <img id="door-icon" src={Door} alt="door icon" />
-          <h1 id="out-txt">Logout</h1>
-        </button>
+        <Link to={"/login"}>
+          <button id="door-btn">
+            <img id="door-icon" src={Door} alt="door icon" />
+            <h1 id="out-txt">Logout</h1>
+          </button>
+        </Link>
       </div>
     </div>
   );
