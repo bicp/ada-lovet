@@ -1,10 +1,10 @@
 import React from "react";
 import "./Event.css";
-import { Sidebar } from "../Sidebar/Sidebar";
-import { Header } from "../Header/Header";
-import { Bottom } from "../Bottom/Bottom";
-import { Calendar } from "../Calendar/Calendar";
-import { EventEdit } from "../EventEdit/EventEdit";
+import { Sidebar } from "../../components/Sidebar/Sidebar";
+import { Header } from "../../components/Header/Header";
+import { Bottom } from "../../components/Bottom/Bottom";
+import { Calendar } from "../../components/Calendar/Calendar";
+import { EventEdit } from "../../components/EventEdit/EventEdit";
 
 export function Event(props) {
   return (

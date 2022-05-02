@@ -1,7 +1,7 @@
 import "./App.css";
-import { Dashboard } from "./components/Dashboard/Dashboard";
-import { Event } from "./components/Event/Event";
-import { Login } from "./components/Login/Login";
+import { Dashboard } from "./pages/Dashboard/Dashboard";
+import { Event } from "./pages/Event/Event";
+import { Login } from "./pages/Login/Login";
 
 function App() {
   return (
