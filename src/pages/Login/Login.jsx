@@ -4,8 +4,8 @@ import AdaImg from "./ada-lovet.png";
 import AdaLogo from "./ada-logo.png";
 
 export function Login(props) {
-  const [userName, setUserName] = useState("a@a");
-  const [passWord, setPassWord] = useState("1234");
+  const [userName, setUserName] = useState("");
+  const [passWord, setPassWord] = useState("");
 
   return (
     <div id="login">
@@ -25,7 +25,11 @@ export function Login(props) {
             onSubmit={function (evt) {
               evt.preventDefault();
               console.log(userName);
+              if (userName.indexOf(".com") === -1) {
+                console.log("Please submit a valid email.");
+              }
               console.log(passWord);
+              console.log({ userName: userName, passWord: passWord });
             }}
           >
             <input
