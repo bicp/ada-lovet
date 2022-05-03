@@ -7,6 +7,13 @@ import { Calendar } from "../../components/Calendar/Calendar";
 import { EventEdit } from "../../components/EventEdit/EventEdit";
 
 export function Event(props) {
+  const items = [
+    { icon: "calendar", text: "" },
+    {
+      icon: "megaphone",
+      text: "",
+    },
+  ];
   return (
     <div id="dash">
       <Sidebar />
@@ -16,7 +23,7 @@ export function Event(props) {
           {/* <Calendar /> */}
           <EventEdit />
         </div>
-        <Bottom />
+        <Bottom items={items} />
       </div>
     </div>
   );

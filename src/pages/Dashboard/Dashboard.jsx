@@ -7,6 +7,16 @@ import { Bottom } from "../../components/Bottom/Bottom";
 import { Notes } from "../../components/Notes/Notes";
 
 export function Dashboard(props) {
+  const items = [
+    {
+      icon: "calendar",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      icon: "megaphone",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+  ];
   return (
     <div id="dash">
       <Sidebar />
@@ -16,7 +26,7 @@ export function Dashboard(props) {
           <Calendar />
           <Notes />
         </div>
-        <Bottom />
+        <Bottom items={items} />
       </div>
     </div>
   );

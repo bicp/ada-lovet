@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./Login.css";
 import AdaImg from "./ada-lovet.png";
 import AdaLogo from "./ada-logo.png";
+import { useNavigate } from "react-router-dom";
 
 export function Login(props) {
   const [userName, setUserName] = useState("");
   const [passWord, setPassWord] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div id="login">
@@ -30,6 +32,7 @@ export function Login(props) {
               }
               console.log(passWord);
               console.log({ userName: userName, passWord: passWord });
+              navigate("/");
             }}
           >
             <input
