@@ -6,7 +6,7 @@ export function Header(props) {
     <div id="main-header">
       <div id="btn-div">
         <button>Any subject</button>
-        <button>Any Distance</button>
+        <button>Any date</button>
         <button>Reset Filters</button>
       </div>
       <div id="input-div">

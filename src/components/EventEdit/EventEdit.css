@@ -1,4 +1,4 @@
-#main-edit {
+#event-edit-content {
   width: 100%;
   height: 70%;
   color: #000000;
@@ -11,5 +11,77 @@
   padding: 20px 0;
   background: #ffffff;
   border: 1px solid #000000;
-  border-radius: 0px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+#event-edit {
+  width: 100%;
+  height: 80%;
+}
+
+#event-edit-date {
+  color: #000000;
+  font-family: "Source Sans Pro";
+  font-size: 100%;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  text-align: left;
+  padding: 10px;
+  background: #ffeb3b;
+  border: 1px solid #000000;
+  border-radius: 20px;
+}
+
+#event-edit-title {
+  color: #000000;
+  font-family: "Source Sans Pro";
+  font-size: 100%;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  text-align: left;
+  padding: 10px;
+  background: #dff8fb;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+#event-edit-local {
+  color: #000000;
+  font-family: "Source Sans Pro";
+  font-size: 100%;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  text-align: left;
+  padding: 10px;
+  background: hwb(348 88% 2%);
+  border: 1px solid #000000;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+#event-edit-btn {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  width: 100%;
+}
+
+#event-edit-save {
+  margin: 10px;
+  font-size: 100%;
+  border-radius: 10px;
+  background: hsl(102, 82%, 69%);
+}
+
+#event-edit-cancel {
+  margin: 10px;
+  font-size: 100%;
+  border-radius: 10px;
+  background: rgb(252, 71, 71);
+  display: block;
 }

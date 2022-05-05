@@ -23,7 +23,7 @@ export function Event(props) {
           {/* <Calendar /> */}
           <EventEdit />
         </div>
-        <Bottom items={items} />
+        {/* <Bottom items={items} /> */}
       </div>
     </div>
   );

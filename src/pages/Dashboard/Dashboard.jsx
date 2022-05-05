@@ -1,22 +1,16 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./Dashboard.css";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { Calendar } from "../../components/Calendar/Calendar";
 import { Header } from "../../components/Header/Header";
 import { Bottom } from "../../components/Bottom/Bottom";
 import { Notes } from "../../components/Notes/Notes";
+import { GlobalState } from "../../App";
 
 export function Dashboard(props) {
-  const items = [
-    {
-      icon: "calendar",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      icon: "megaphone",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-  ];
+  const [items, setItems] = useState([]);
+  const context = useContext(GlobalState);
+
   return (
     <div id="dash">
       <Sidebar />
@@ -26,7 +20,7 @@ export function Dashboard(props) {
           <Calendar />
           <Notes />
         </div>
-        <Bottom items={items} />
+        <Bottom items={context.state.events} />
       </div>
     </div>
   );
