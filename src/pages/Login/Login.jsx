@@ -32,7 +32,17 @@ export function Login(props) {
               }
               console.log(passWord);
               console.log({ userName: userName, passWord: passWord });
-              navigate("/");
+              const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  userName: userName,
+                  passWord: passWord,
+                }),
+              };
+              fetch("http://localhost:4001/login", requestOptions).then(
+                (response) => navigate("/")
+              );
             }}
           >
             <input
@@ -59,7 +69,7 @@ export function Login(props) {
                 Login
               </button>
 
-              <a href="">Forgot password?</a>
+              <a href="#">Forgot password?</a>
             </div>
           </form>
         </div>

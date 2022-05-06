@@ -26,11 +26,21 @@ export function Bottom(props) {
             <h2>{item.id}</h2>
             <button
               onClick={(evt) => {
-                context.setState({
-                  events: context.state.events.filter((event) => {
-                    return event.id !== item.id;
-                  }),
-                });
+                const requestOptions = {
+                  method: "DELETE",
+                  headers: { "Content-Type": "application/json" },
+                };
+                fetch(`http://localhost:4001/events/${item.id}`, requestOptions)
+                  .then((response) => response.json())
+                  .then((data) => {
+                    console.log(data);
+                    console.log([...context.state.events, data]);
+                    context.setState({
+                      ...context.state,
+                      events: data,
+                    });
+                    navigate("/");
+                  });
               }}
             >
               Delete

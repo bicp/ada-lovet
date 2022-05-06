@@ -7,11 +7,12 @@ export function EventEdit(props) {
   const navigate = useNavigate();
   const context = useContext(GlobalState);
   const params = useParams();
+  const event = getEvent(params.id);
 
-  const [title, setTitle] = useState(getEvent(params.id).title);
-  const [content, setContent] = useState(getEvent(params.id).content);
-  const [local, setLocal] = useState(getEvent(params.id).local);
-  const [date, setDate] = useState(getEvent(params.id).date);
+  const [title, setTitle] = useState(event.title);
+  const [content, setContent] = useState(event.content);
+  const [local, setLocal] = useState(event.local);
+  const [date, setDate] = useState(event.date);
 
   function getEvent(id) {
     const result = context.state.events.find((evt) => evt.id == id) || {
@@ -30,28 +31,65 @@ export function EventEdit(props) {
         id="event-edit"
         onSubmit={function (evt) {
           evt.preventDefault();
+          console.log(event.id);
           console.log({
             title: title,
             content: content,
             local: local,
             date: date,
           });
-          context.setState({
-            ...context.state,
-            events: [
-              ...context.state.events,
-              {
-                id: context.state.events.length + 1,
+          if (event.id !== undefined) {
+            const requestOptions = {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
                 title: title,
                 content: content,
                 local: local,
                 date: date,
-              },
-            ],
-          });
-          navigate("/");
+              }),
+            };
+            fetch(`http://localhost:4001/events/${event.id}`, requestOptions)
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data);
+                console.log([...context.state.events, data]);
+                context.setState({
+                  ...context.state,
+                  events: data,
+                });
+                navigate("/");
+              });
+          } else {
+            const requestOptions = {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                title: title,
+                content: content,
+                local: local,
+                date: date,
+              }),
+            };
+            fetch("http://localhost:4001/events", requestOptions)
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data);
+                context.setState({
+                  ...context.state,
+                  events: [...context.state.events, data],
+                });
+                navigate("/");
+              });
+          }
         }}
       >
+        {/* <input
+          id="event-edit-id"
+          // type="text"
+          placeholder="ID"
+          value={event.id}
+        /> */}
         <input
           id="event-edit-title"
           type="text"
