@@ -15,7 +15,7 @@ export function EventEdit(props) {
   const [date, setDate] = useState(event.date);
 
   function getEvent(id) {
-    const result = context.state.events.find((evt) => evt.id == id) || {
+    const result = context.state.events.find((evt) => evt._id == id) || {
       title: "",
       date: "",
       content: "",
@@ -31,14 +31,8 @@ export function EventEdit(props) {
         id="event-edit"
         onSubmit={function (evt) {
           evt.preventDefault();
-          console.log(event.id);
-          console.log({
-            title: title,
-            content: content,
-            local: local,
-            date: date,
-          });
-          if (event.id !== undefined) {
+
+          if (event._id !== undefined) {
             const requestOptions = {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
@@ -49,14 +43,21 @@ export function EventEdit(props) {
                 date: date,
               }),
             };
-            fetch(`http://localhost:4001/events/${event.id}`, requestOptions)
+            fetch(
+              `https://ada-lovet.herokuapp.com/events/${event._id}`,
+              requestOptions
+            )
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
-                console.log([...context.state.events, data]);
                 context.setState({
                   ...context.state,
-                  events: data,
+                  events: context.state.events.map((event) => {
+                    if (event._id === data._id) {
+                      return data;
+                    } else {
+                      return event;
+                    }
+                  }),
                 });
                 navigate("/");
               });
@@ -71,10 +72,10 @@ export function EventEdit(props) {
                 date: date,
               }),
             };
-            fetch("http://localhost:4001/events", requestOptions)
+            fetch("https://ada-lovet.herokuapp.com/events", requestOptions)
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
+                console.log("LOLOLOLOL", data);
                 context.setState({
                   ...context.state,
                   events: [...context.state.events, data],

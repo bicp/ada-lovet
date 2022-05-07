@@ -40,9 +40,10 @@ export function Login(props) {
                   passWord: passWord,
                 }),
               };
-              fetch("http://localhost:4001/login", requestOptions).then(
-                (response) => navigate("/")
-              );
+              fetch(
+                "https://ada-lovet.herokuapp.com/login",
+                requestOptions
+              ).then((response) => navigate("/"));
             }}
           >
             <input

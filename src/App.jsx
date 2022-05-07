@@ -32,8 +32,7 @@ function App() {
   });
 
   useEffect(() => {
-    console.log("VAAAIAII");
-    fetch("http://localhost:4001/events")
+    fetch("https://ada-lovet.herokuapp.com/events")
       .then((response) => response.json())
       .then((data) => {
         setState({ events: data });

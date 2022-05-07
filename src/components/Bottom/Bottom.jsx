@@ -17,27 +17,32 @@ export function Bottom(props) {
           <div
             id="icon1"
             onClick={() => {
-              navigate(`/event/${item.id}`);
+              console.log("adasdasda", item);
+              navigate(`/event/${item._id}`);
             }}
-            key={item.id}
+            key={item._id}
           >
             <img src={item.icon === "calendar" ? Calendar : Megaphone} alt="" />
             <div>{item.content}</div>
-            <h2>{item.id}</h2>
+            {/* <h2>{item.id}</h2> */}
             <button
               onClick={(evt) => {
+                console.log(item);
                 const requestOptions = {
                   method: "DELETE",
                   headers: { "Content-Type": "application/json" },
                 };
-                fetch(`http://localhost:4001/events/${item.id}`, requestOptions)
+                fetch(
+                  `https://ada-lovet.herokuapp.com/events/${item._id}`,
+                  requestOptions
+                )
                   .then((response) => response.json())
                   .then((data) => {
-                    console.log(data);
-                    console.log([...context.state.events, data]);
                     context.setState({
                       ...context.state,
-                      events: data,
+                      events: context.state.events.filter((event) => {
+                        return event._id !== item._id;
+                      }),
                     });
                     navigate("/");
                   });
