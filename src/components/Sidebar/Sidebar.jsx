@@ -18,7 +18,7 @@ export function Sidebar(props) {
       </div>
 
       <div id="sidebar-out">
-        <Link to={"/login"}>
+        <Link to={"/"}>
           <button id="door-btn">
             <img id="door-icon" src={Door} alt="door icon" />
             <h1 id="out-txt">Logout</h1>

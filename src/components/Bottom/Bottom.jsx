@@ -44,7 +44,7 @@ export function Bottom(props) {
                         return event._id !== item._id;
                       }),
                     });
-                    navigate("/");
+                    navigate("/dashboard");
                   });
               }}
             >

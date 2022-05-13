@@ -87,7 +87,8 @@
   margin-top: 20px;
 }
 
-#login-btn {
+#login-btn,
+#signup-btn {
   left: 161px;
   top: 410px;
   width: 100px;

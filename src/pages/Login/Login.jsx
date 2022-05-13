@@ -1,13 +1,73 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import AdaImg from "./ada-lovet.png";
 import AdaLogo from "./ada-logo.png";
 import { useNavigate } from "react-router-dom";
+import { GlobalState } from "../../App";
 
 export function Login(props) {
   const [userName, setUserName] = useState("");
   const [passWord, setPassWord] = useState("");
   const navigate = useNavigate();
+
+  const context = useContext(GlobalState);
+
+  const signup = (evt) => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: userName,
+        password: passWord,
+      }),
+    };
+    fetch(
+      // "https://ada-lovet.herokuapp.com/login",
+      "http://localhost:4001/signup",
+      requestOptions
+    ).then((response) => {
+      context.setState({
+        ...context.state,
+        user: {
+          id: response.id,
+          email: response.email,
+        },
+      });
+      navigate("/dashboard");
+    });
+  };
+
+  const login = function (evt) {
+    evt.preventDefault();
+
+    console.log(userName);
+    if (userName.indexOf(".com") === -1) {
+      console.log("Please submit a valid email.");
+    }
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: userName,
+        password: passWord,
+      }),
+    };
+    // fetch("https://ada-lovet.herokuapp.com/login", requestOptions).then(
+    fetch("http://localhost:4001/login", requestOptions)
+      .then((r) => r.json())
+      .then((response) => {
+        console.log("RESPONSEEE", response);
+        context.setState({
+          ...context.state,
+          user: {
+            id: response.id,
+            email: response.email,
+          },
+        });
+        navigate("/dashboard");
+      });
+  };
 
   return (
     <div id="login">
@@ -24,26 +84,8 @@ export function Login(props) {
         </h1>
         <div id="form-input">
           <form
-            onSubmit={function (evt) {
+            onSubmit={(evt) => {
               evt.preventDefault();
-              console.log(userName);
-              if (userName.indexOf(".com") === -1) {
-                console.log("Please submit a valid email.");
-              }
-              console.log(passWord);
-              console.log({ userName: userName, passWord: passWord });
-              const requestOptions = {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  userName: userName,
-                  passWord: passWord,
-                }),
-              };
-              fetch(
-                "https://ada-lovet.herokuapp.com/login",
-                requestOptions
-              ).then((response) => navigate("/"));
             }}
           >
             <input
@@ -66,8 +108,12 @@ export function Login(props) {
               }}
             />
             <div id="login-btn-wrap">
-              <button id="login-btn" type="submit">
+              <button id="login-btn" type="submit" onClick={login}>
                 Login
+              </button>
+
+              <button id="signup-btn" type="submit" onClick={signup}>
+                Sign Up
               </button>
 
               <a href="#">Forgot password?</a>

@@ -7,8 +7,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useState, useEffect } from "react";
 
 export const GlobalState = createContext({
-  state: { events: [] },
-  setState: (state) => state,
+  state: { events: [], user: {} },
+  setState: (state) => {
+    console.log("new state", state);
+    return state;
+  },
 });
 
 function App() {
@@ -32,23 +35,26 @@ function App() {
   });
 
   useEffect(() => {
-    fetch("https://ada-lovet.herokuapp.com/events")
-      .then((response) => response.json())
-      .then((data) => {
-        setState({ events: data });
-        console.log(data);
-      });
-  }, []);
+    if (state.user && state.user.id) {
+      // fetch("https://ada-lovet.herokuapp.com/events?id=" + state.user.id)
+      fetch("http://localhost:4001/events?id=" + state.user.id)
+        .then((response) => response.json())
+        .then((data) => {
+          setState({ events: data });
+          console.log(data);
+        });
+    }
+  }, [state.user]);
 
   return (
     <div className="App">
       <GlobalState.Provider value={{ state, setState }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="event" element={<Event />} />
             <Route path="event/:id" element={<Event />} />
-            <Route path="login" element={<Login />} />
+            <Route path="/" element={<Login />} />
           </Routes>
         </BrowserRouter>
       </GlobalState.Provider>

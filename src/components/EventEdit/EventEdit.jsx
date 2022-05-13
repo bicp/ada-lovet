@@ -59,7 +59,7 @@ export function EventEdit(props) {
                     }
                   }),
                 });
-                navigate("/");
+                navigate("/dashboard");
               });
           } else {
             const requestOptions = {
@@ -80,7 +80,7 @@ export function EventEdit(props) {
                   ...context.state,
                   events: [...context.state.events, data],
                 });
-                navigate("/");
+                navigate("/dashboard");
               });
           }
         }}
@@ -138,7 +138,7 @@ export function EventEdit(props) {
       <button
         id="event-edit-cancel"
         onClick={() => {
-          navigate("/");
+          navigate("/dashboard");
         }}
       >
         Cancel
