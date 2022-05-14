@@ -23,7 +23,7 @@ export function Login(props) {
     };
     fetch(
       (process.env.REACT_APP_API || "https://ada-lovet.herokuapp.com/") +
-        "login",
+        "signup",
       requestOptions
     ).then((response) => {
       if (!response.message) {

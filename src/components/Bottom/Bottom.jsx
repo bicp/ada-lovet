@@ -30,7 +30,6 @@ export function Bottom(props) {
                 onClick={(evt) => {
                   evt.preventDefault();
 
-                  console.log(item);
                   const requestOptions = {
                     method: "DELETE",
                     headers: { "Content-Type": "application/json" },

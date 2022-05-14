@@ -32,7 +32,6 @@ function App() {
             ...state,
             events: data,
           });
-          console.log(data);
         });
     }
   }, [state.user]);

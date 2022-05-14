@@ -84,7 +84,6 @@ export function EventEdit(props) {
             )
               .then((response) => response.json())
               .then((data) => {
-                console.log("LOLOLOLOL", data);
                 context.setState({
                   ...context.state,
                   events: [...context.state.events, data],
