@@ -12,8 +12,6 @@ export function Login(props) {
 
   const context = useContext(GlobalState);
 
-  console.log("VAAAI ", process.env.REACT_APP_API);
-
   const signup = (evt) => {
     const requestOptions = {
       method: "POST",
@@ -28,24 +26,23 @@ export function Login(props) {
         "login",
       requestOptions
     ).then((response) => {
-      context.setState({
-        ...context.state,
-        user: {
-          id: response.id,
-          email: response.email,
-        },
-      });
-      navigate("/dashboard");
+      if (!response.message) {
+        context.setState({
+          ...context.state,
+          user: {
+            id: response.id,
+            email: response.email,
+          },
+        });
+        navigate("/dashboard");
+      } else {
+        alert(response.message);
+      }
     });
   };
 
   const login = function (evt) {
     evt.preventDefault();
-
-    console.log(userName);
-    if (userName.indexOf(".com") === -1) {
-      console.log("Please submit a valid email.");
-    }
 
     const requestOptions = {
       method: "POST",
@@ -62,15 +59,18 @@ export function Login(props) {
     )
       .then((r) => r.json())
       .then((response) => {
-        console.log("RESPONSEEE", response);
-        context.setState({
-          ...context.state,
-          user: {
-            id: response.id,
-            email: response.email,
-          },
-        });
-        navigate("/dashboard");
+        if (!response.message) {
+          context.setState({
+            ...context.state,
+            user: {
+              id: response.id,
+              email: response.email,
+            },
+          });
+          navigate("/dashboard");
+        } else {
+          alert(response.message);
+        }
       });
   };
 
