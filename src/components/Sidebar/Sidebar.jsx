@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Sidebar.css";
 import AdaIcon from "./ada-icon.png";
 import Door from "./export.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { GlobalState } from "../../App";
 
 export function Sidebar(props) {
+  const context = useContext(GlobalState);
+  const navigate = useNavigate();
+
   return (
     <div id="dash-sidebar">
       <div id="side-icon">
         <img src={AdaIcon} alt="" />
-        <h1 id="side-txt">Welcome, Ada &#x1F44B;</h1>
+        <h1 id="side-txt">
+          Welcome, {context.state.user?.email?.split("@")[0]} &#x1F44B;
+        </h1>
       </div>
       <div id="sidebar-btn">
         <Link to={"/event"}>
@@ -18,12 +24,16 @@ export function Sidebar(props) {
       </div>
 
       <div id="sidebar-out">
-        <Link to={"/"}>
-          <button id="door-btn">
-            <img id="door-icon" src={Door} alt="door icon" />
-            <h1 id="out-txt">Logout</h1>
-          </button>
-        </Link>
+        <button
+          id="door-btn"
+          onClick={function () {
+            context.setState({ events: [], user: {} });
+            navigate("/");
+          }}
+        >
+          <img id="door-icon" src={Door} alt="door icon" />
+          <h1 id="out-txt">Logout</h1>
+        </button>
       </div>
     </div>
   );

@@ -12,6 +12,8 @@ export function Login(props) {
 
   const context = useContext(GlobalState);
 
+  console.log("VAAAI ", process.env.REACT_APP_API);
+
   const signup = (evt) => {
     const requestOptions = {
       method: "POST",
@@ -22,8 +24,8 @@ export function Login(props) {
       }),
     };
     fetch(
-      // "https://ada-lovet.herokuapp.com/login",
-      "http://localhost:4001/signup",
+      (process.env.REACT_APP_API || "https://ada-lovet.herokuapp.com/") +
+        "login",
       requestOptions
     ).then((response) => {
       context.setState({
@@ -53,8 +55,11 @@ export function Login(props) {
         password: passWord,
       }),
     };
-    // fetch("https://ada-lovet.herokuapp.com/login", requestOptions).then(
-    fetch("http://localhost:4001/login", requestOptions)
+    fetch(
+      (process.env.REACT_APP_API || "https://ada-lovet.herokuapp.com/") +
+        "login",
+      requestOptions
+    )
       .then((r) => r.json())
       .then((response) => {
         console.log("RESPONSEEE", response);

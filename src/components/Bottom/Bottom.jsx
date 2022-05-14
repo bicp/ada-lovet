@@ -14,42 +14,49 @@ export function Bottom(props) {
     <div id="main-bottom">
       {props.items.map(function (item) {
         return (
-          <div
-            id="icon1"
-            onClick={() => {
-              console.log("adasdasda", item);
-              navigate(`/event/${item._id}`);
-            }}
-            key={item._id}
-          >
+          <div id="icon1" key={item._id}>
             <img src={item.icon === "calendar" ? Calendar : Megaphone} alt="" />
-            <div>{item.content}</div>
-            {/* <h2>{item.id}</h2> */}
-            <button
-              onClick={(evt) => {
-                console.log(item);
-                const requestOptions = {
-                  method: "DELETE",
-                  headers: { "Content-Type": "application/json" },
-                };
-                fetch(
-                  `https://ada-lovet.herokuapp.com/events/${item._id}`,
-                  requestOptions
-                )
-                  .then((response) => response.json())
-                  .then((data) => {
-                    context.setState({
-                      ...context.state,
-                      events: context.state.events.filter((event) => {
-                        return event._id !== item._id;
-                      }),
-                    });
-                    navigate("/dashboard");
-                  });
+            <div
+              onClick={() => {
+                navigate(`/event/${item._id}`);
               }}
             >
-              Delete
-            </button>
+              {item.content}
+            </div>
+            {/* <h2>{item.id}</h2> */}
+
+            {item.userId === context.state.user.id ? (
+              <button
+                onClick={(evt) => {
+                  evt.preventDefault();
+
+                  console.log(item);
+                  const requestOptions = {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                  };
+                  fetch(
+                    `${
+                      (process.env.REACT_APP_API ||
+                        "https://ada-lovet.herokuapp.com/") + "events/"
+                    }${item._id}`,
+                    requestOptions
+                  )
+                    .then((response) => response.json())
+                    .then((data) => {
+                      context.setState({
+                        ...context.state,
+                        events: context.state.events.filter((event) => {
+                          return event._id !== item._id;
+                        }),
+                      });
+                      navigate("/dashboard");
+                    });
+                }}
+              >
+                Delete
+              </button>
+            ) : null}
           </div>
         );
       })}

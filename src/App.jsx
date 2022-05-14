@@ -16,31 +16,22 @@ export const GlobalState = createContext({
 
 function App() {
   const [state, setState] = useState({
-    events: [
-      // {
-      //   id: 1,
-      //   title: "title 1",
-      //   content: "content 1",
-      //   date: "2022-05-14T20:26",
-      //   location: "location 1",
-      // },
-      // {
-      //   id: 2,
-      //   title: "title 2",
-      //   content: "content 2",
-      //   date: "2022-05-14T20:26",
-      //   location: "location 2",
-      // },
-    ],
+    events: [],
+    user: {},
   });
 
   useEffect(() => {
     if (state.user && state.user.id) {
-      // fetch("https://ada-lovet.herokuapp.com/events?id=" + state.user.id)
-      fetch("http://localhost:4001/events?id=" + state.user.id)
+      fetch(
+        (process.env.REACT_APP_API || "https://ada-lovet.herokuapp.com/") +
+          "events"
+      )
         .then((response) => response.json())
         .then((data) => {
-          setState({ events: data });
+          setState({
+            ...state,
+            events: data,
+          });
           console.log(data);
         });
     }

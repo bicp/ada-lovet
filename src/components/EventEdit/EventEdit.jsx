@@ -41,10 +41,14 @@ export function EventEdit(props) {
                 content: content,
                 local: local,
                 date: date,
+                userId: context.state.user.id,
               }),
             };
             fetch(
-              `https://ada-lovet.herokuapp.com/events/${event._id}`,
+              `${
+                (process.env.REACT_APP_API ||
+                  "https://ada-lovet.herokuapp.com/") + "events/"
+              }${event._id}`,
               requestOptions
             )
               .then((response) => response.json())
@@ -70,9 +74,14 @@ export function EventEdit(props) {
                 content: content,
                 local: local,
                 date: date,
+                userId: context.state.user.id,
               }),
             };
-            fetch("https://ada-lovet.herokuapp.com/events", requestOptions)
+            fetch(
+              (process.env.REACT_APP_API ||
+                "https://ada-lovet.herokuapp.com/") + "events",
+              requestOptions
+            )
               .then((response) => response.json())
               .then((data) => {
                 console.log("LOLOLOLOL", data);
